@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/responsive.css">
+  <title>Multi-step form | Frontend Mentor</title>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+
+</head>
+
+<body>
+  <div class="step">
+    <div class="step-menu">
+      <nav class="menu-nav">
+        <ul>
+          <li class="menu-list active" onclick="EventOnclickStep(this)" value="0">
+            <span class="item-number">1</span>
+            <div class="menu-content">
+              <div class="menu-step">step 1</div>
+              <div class="menu-title">your infor</div>
+            </div>
+          </li>
+          <li class="menu-list" onclick="EventOnclickStep(this)" value="1">
+            <span class="item-number">2</span>
+            <div class="menu-content">
+              <div class="menu-step">step 2</div>
+              <div class="menu-title">select plan</div>
+            </div>
+          </li>
+          <li class="menu-list" onclick="EventOnclickStep(this)" value="2">
+            <span class="item-number">3</span>
+            <div class="menu-content">
+              <div class="menu-step">step 3</div>
+              <div class="menu-title">add-ons</div>
+            </div>
+          </li>
+          <li class="menu-list" onclick="EventOnclickStep(this)" value="3">
+            <span class="item-number">4</span>
+            <div class="menu-content">
+              <div class="menu-step">step 4</div>
+              <div class="menu-title">summary</div>
+            </div>
+          </li>
+          <li class="menu-list" value="4" style="display: none;">
+            <span class="item-number">5</span>
+            <div class="menu-content">
+              <div class="menu-step">step 5</div>
+              <div class="menu-title">fake menu</div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="image">
+        <img src="./assets/images/layered-waves-haikei.png" alt="">
+        <!-- <div class="orange"></div>
+        <div class="shadow"></div>
+        <div class="tomato"></div> -->
+      </div>
+    </div>
+    <div class="step-content">
+      <div class="content-title">
+        <h1 class="title-main">Personal info</h1>
+        <p class="sub-title">Please provide your name, email address, and phone number.</p>
+      </div>
+      <form class="content-main">
+        <div class="form-field">
+          <div class="around-label">
+            <label for="usename" class="form-label">Name</label>
+            <label class="invalid-text" id="usename-invalid">This field is required</label>
+          </div>
+          <input type="text" id="usename" class="form-input" placeholder="Please enter your name"
+            onkeyup="HandleChangeInputValue()">
+        </div>
+        <div class="form-field">
+          <div class="around-label">
+            <label for="email" class="form-label">Email Address</label>
+            <label class="invalid-text" id="email-invalid">This field is required</label>
+          </div>
+          <input type="email" id="email" class="form-input" required placeholder="Please enter your email address"
+            onkeyup="HandleChangeInputValue()">
+        </div>
+        <div class="form-field">
+          <div class="around-label">
+            <label for="phone" class="form-label">Phone Number</label>
+            <label class="invalid-text" id="phone-invalid">This field is required</label>
+          </div>
+          <input type="number" id="phone" class="form-input" placeholder="e.g +1 234 567 890"
+            onkeyup="HandleChangeInputValue()">
+        </div>
+      </form>
+      <div class="control">
+        <li class="form-button" onclick="OnclickNext(this)" value="0"><a>Next Step</a></li>
+      </div>
+    </div>
+    <div class="step-content step-content--hiden">
+      <div class="content-title">
+        <h1 class="title-main">Select your plan</h1>
+        <p class="sub-title">You have the option of monthly or yearly biling.</p>
+      </div>
+      <div class="content-main">
+        <div class="content-card">
+          <div class="card-body card-body--active" id="card-arcade" name="card" onclick="ChooseCard(this)">
+            <img src="./assets/images/icon-arcade.svg" alt="">
+            <div>
+              <h1 class="card-title">Arcade</h1>
+              <div id="arcade">
+                <p class="card-price">$9/month</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" id="card-advanced" name="card" onclick="ChooseCard(this)">
+            <img src="./assets/images/icon-advanced.svg" alt="">
+            <div>
+              <h1 class="card-title">Advanced</h1>
+              <div id="advanced">
+                <p class="card-price">$12/month</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" id="card-pro" name="card" onclick="ChooseCard(this)">
+            <img src="./assets/images/icon-pro.svg" alt="">
+            <div>
+              <h1 class="card-title">Pro</h1>
+              <div id="pro">
+                <p class="card-price">$15/month</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-select">
+          <span id="select-monthly" class="select-text select-text--active"
+            onclick="SelectMonthlyOrYearly()">Monthly</span>
+          <div id="select-button" onclick="SelectMonthlyOrYearly()"><span></span></div>
+          <span id="select-yearly" class="select-text" onclick="SelectMonthlyOrYearly()">Yearly</span>
+        </div>
+      </div>
+      <div class="control">
+        <li class="btn-back" onclick="OnclickPrev(this)" value="1">Go Back</li>
+        <li class="form-button" onclick="OnclickNext(this)" value="1">Next Step</li>
+      </div>
+    </div>
+    <div class="step-content step-content--hiden">
+      <div class="content-title">
+        <h1 class="title-main">Pick add-ons</h1>
+        <p class="sub-title">Add-ons help enhance your gaming experience.</p>
+      </div>
+      <div class="content-main">
+        <label class="add-select" id="add-select1" for="add-select">
+          <input type="checkbox" name="select" id="add-select" class="add-input" onclick="AddClickCheckbox(this)"
+            value="0">
+          <div class="add-content">
+            <div>
+              <div class="add-title">Online service</div>
+              <div class="add-text">Access to multiplayer games</div>
+            </div>
+            <span class="add-price" id="add-price">+$1/month</span>
+          </div>
+        </label>
+        <label class="add-select" for="add-select-2" id="add-select2">
+          <input type="checkbox" name="select" id="add-select-2" class="add-input" onclick="AddClickCheckbox(this)"
+            value="1">
+          <div class="add-content">
+            <div>
+              <div class="add-title">Larger storage</div>
+              <div class="add-text">Extra 1TB of cloud save</div>
+            </div>
+            <span class="add-price" id="add-price">+$2/month</span>
+          </div>
+        </label>
+        <label class="add-select" for="add-select-3" id="add-select3">
+          <input type="checkbox" name="select" id="add-select-3" class="add-input" onclick="AddClickCheckbox(this)"
+            value="2">
+          <div class="add-content">
+            <div>
+              <div class="add-title">Customizable Profile</div>
+              <div class="add-text">Custom theme on your profile</div>
+            </div>
+            <span class="add-price" id="add-price">+$3/month</span>
+          </div>
+        </label>
+      </div>
+      <div class="control">
+        <li class="btn-back" onclick="OnclickPrev(this)" value="2">Go Back</li>
+        <li class="form-button" onclick="OnclickNext(this)" value="2">Next Step</li>
+      </div>
+    </div>
+    <div class="step-content step-content--hiden">
+      <div class="content-title">
+        <h1 class="title-main">Finishing Up</h1>
+        <p class="sub-title">Double-check everything looks OK before confirming.</p>
+      </div>
+      <div class="content-main">
+        <div class="finishing-body">
+          <div class="finishing-top">
+            <div class="finishing-month">
+              <h1 class="finishing-arcade" id="finishing-card--title">Arcade (Monthly)</h1>
+              <li class="finishing-change" onclick="OnclickPrev(this)" value="2">Change</li>
+            </div>
+            <span class="finishing-arcade-price" id="finishing-card--cost">$9/month</span>
+          </div>
+          <div class="finishing-bottom" id="finishing-bottom">
+            <!-- <div class="finishing-items">
+              <p class="finishing-online">Online service</p>
+              <span class="finishing-price finishing-online-price">+$1/month</span>
+            </div>
+            <div class="finishing-items">
+              <p class="finishing-large">Larger storage</p>
+              <span class="finishing-price finishing-large-price">+$2/month</span>
+            </div> -->
+          </div>
+        </div>
+        <div class="finishing-total">
+          <p class="total-title">Total (per month)</p>
+          <span class="total-result" id="total-result">+$12/month</span>
+        </div>
+      </div>
+      <!-- <div class="content-main">
+        <div class="finishing-body">
+          <div class="finishing-top">
+            <div class="finishing-month">
+              <h1 class="finishing-arcade" id="finishing-arcade">Arcade (Monthly)</h1>
+              <li class="finishing-change" onclick="OnclickPrev(this)" value="2">Change</li>
+            </div>
+            <span class="finishing-arcade-price">$9/month</span>
+          </div>
+          <div class="finishing-bottom">
+            <div class="finishing-items">
+              <p class="finishing-online">Online service</p>
+              <span class="finishing-online-price">+$1/month</span>
+            </div>
+            <div class="finishing-items">
+              <p class="finishing-large">Larger storage</p>
+              <span class="finishing-large-price">+$2/month</span>
+            </div>
+          </div>
+        </div>
+        <div class="finishing-total">
+          <p class="total-title">Total (per month)</p>
+          <span class="total-result">+$12/month</span>
+        </div>
+      </div>
+      <div class="content-main">
+        <div class="finishing-body">
+          <div class="finishing-top">
+            <div class="finishing-month">
+              <h1 class="finishing-arcade" id="finishing-arcade">Arcade (Monthly)</h1>
+              <li class="finishing-change" onclick="OnclickPrev(this)" value="2">Change</li>
+            </div>
+            <span class="finishing-arcade-price">$9/month</span>
+          </div>
+          <div class="finishing-bottom">
+            <div class="finishing-items">
+              <p class="finishing-online">Online service</p>
+              <span class="finishing-online-price">+$1/month</span>
+            </div>
+            <div class="finishing-items">
+              <p class="finishing-large">Larger storage</p>
+              <span class="finishing-large-price">+$2/month</span>
+            </div>
+          </div>
+        </div>
+        <div class="finishing-total">
+          <p class="total-title">Total (per month)</p>
+          <span class="total-result">+$12/month</span>
+        </div>
+      </div> -->
+
+      <div class="control">
+        <li class="btn-back" onclick="OnclickPrev(this)" value="3">Go Back</li>
+        <li type="submit" class="form-button form-button--confirm" onclick="OnclickNext(this)" value="3">Confirm</li>
+      </div>
+    </div>
+    <div class="step-content step-content--hiden">
+      <div class="thank-container">
+        <img class="thank-img" src="./assets/images/icon-thank-you.svg" alt="">
+        <h1 class="thank-title">Thank you!</h1>
+        <p class="thank-text">Thanks for confirming your subscription! We hope you have fun using our flatform. If you
+          ever need support, please feel free to email us at tuannguyen@tuntino.com</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script/main.js"></script>
+</body>
+
+</html>
