@@ -30,6 +30,13 @@ var betweenMonthYear;
 var betweenMonthYearPrice;
 var regexEmail =
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+var animationPage = document.getElementById("animation-page");
+var step = document.getElementById("step");
+setTimeout(() => {
+  animationPage.style.display = "none";
+  step.style.display = "flex";
+}, 2500);
+
 function EventOnclickStep(index) {
   var addPrice = document.querySelectorAll(".add-price");
   var selectYearlyStatus = selectYearly.className.includes(
