@@ -48,6 +48,8 @@ function EventOnclickStep(index) {
   var finishCardTitle = document.getElementById("finishing-card--title");
   var finishCardCost = document.getElementById("finishing-card--cost");
   // var finishBottom = document.getElementById("finishing-bottom");
+
+  var totalTitle = document.getElementById("total-title");
   var total = document.getElementById("total-result");
   var finishingPrice = Array.from(
     document.getElementsByClassName("finishing-price")
@@ -74,6 +76,12 @@ function EventOnclickStep(index) {
     console.log("component:", rs);
     component.innerText = rs;
   }
+
+  let rp = totalTitle.textContent.replace("month", "year");
+  let rpZero = totalTitle.textContent.replace("year", "month");
+  let rs = selectYearlyStatus ? rp : rpZero;
+  totalTitle.innerText = rs;
+
   for (var component of addPrice) {
     let rp = component.textContent.replace("/month", "0/year");
     let rpZero = component.textContent.replace("0/year", "/month");
